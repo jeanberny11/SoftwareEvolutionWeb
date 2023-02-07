@@ -1,0 +1,846 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewData["Title"] = "Clientes";
+}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Clientes</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+   <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                  <h2 class="card-title">Información De Clientes</h2>
+                    <div class="float-right">
+                        <a class="btn btn-secondary btn-sm">
+                          <i class="fas fa-search"></i> Buscar
+                        </a>
+                        <a class="btn btn-danger btn-sm">
+                          <i class="fas fa-times"></i> Cerrar
+                        </a>
+                        <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-xl">
+                          <i class="fas fa-plus"></i> Agregar
+                        </a>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Nombre</th>
+                                <th>Dirección</th>
+                                <th>Teléfono</th>
+                                <th>Balance</th>
+                                <th>RNC/Cédula</th>
+                                <th>Email</th>
+                                <th>CLasificación del Cliente</th>
+                                <th>Vendedor</th>
+                                <th>Estado</th>
+                                <th>Dias Créditos</th>
+                                <th>Pais</th>
+                                <th>Cuenta Contable</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                     @*   <tfoot>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Nombre</th>
+                                <th>Dirección</th>
+                                <th>Teléfono</th>
+                                <th>Balance</th>
+                                <th>RNC/Cédula</th>
+                                <th>Email</th>
+                                <th>CLasificación del Cliente</th>
+                                <th>Vendedor</th>
+                                <th>Estado</th>
+                                <th>Dias Créditos</th>
+                                <th>Pais</th>
+                                <th>Cuenta Contable</th>
+                            </tr>
+                        </tfoot>*@
+                    </table>
+                    <br/>
+                    <div class="justify-content-center">
+                            <a class="btn btn-app bg-primary">
+                                <i class="fas fa-coins"></i> Estado De Cuenta
+                            </a>
+                            <a class="btn btn-app bg-primary">
+                                <i class="fas fa-users"></i> Historial Cliente
+                            </a>
+                            <a class="btn btn-app bg-primary">
+                                <i class="fas fa-file-invoice"></i> Cotizaciones
+                            </a>
+                            <a class="btn btn-app bg-primary">
+                                <i class="fas fa-file"></i> Pedidos
+                            </a>
+                            <a class="btn btn-app bg-primary">
+                                <i class="fas fa-file-invoice-dollar"></i> Facturas
+                            </a>
+                            <a class="btn btn-app bg-primary">
+                                <i class="fas fa-money-bill"></i> CxC
+                            </a>
+                            <a class="btn btn-app bg-primary">
+                                <i class="fas fa-receipt"></i> Recibos
+                            </a>
+                            <a class="btn btn-app bg-primary">
+                                <i class="fas fa-money-bill"></i> Pagos Aplicados
+                            </a>
+                            <a class="btn btn-app bg-primary">
+                                <i class="fas fa-receipt"></i> Notas Créditos
+                            </a>
+                            <a class="btn btn-app bg-primary">
+                                <i class="fas fa-save"></i> Devolución
+                            </a>
+                        </div>
+                    </div>
+               <!-- /.card-body -->
+                 </div>
+                <!-- /.card -->
+               </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+   </div>
+    <div class="modal fade" id="modal-xl">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Registro de Clientes</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header p-2">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a class="nav-link active" href="#Basicos" data-toggle="tab">Basicos</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#DatosCrediticios" data-toggle="tab">Datos Crediticios</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#DescProntoPago" data-toggle="tab">Desc. x Pronto Pago</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#OtrasInformaciones" data-toggle="tab">Otras Informaciones</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#ListaPrecios" data-toggle="tab">Lista de Precios</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#PrecioRecurrencia" data-toggle="tab">Precio Recurrencia</a></li>
+                            </ul>
+                        </div><!-- /.card-header -->           
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <!-- /.Tab basicos -->
+                                <div class="active tab-pane" id="Basicos">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="inputCodigo" placeholder="Codigo">                                                                                               
+                                                 </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                <input type="text" class="form-control" id="inputRIF" placeholder="RIF/C.I.">
+                                            </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                 <div class="form-group">
+                                                     <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+                                                 </div>
+                                            </div>
+                                        </div>    
+                                        <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección">
+                                                    </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="inputDireccionE" placeholder="Dirección Envio">        
+                                                    </div>
+                                                 </div>                                               
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">                                                   
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="inputFormaEnvio" placeholder="Forma Envio">        
+                                                        </div>                                                   
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="inputTelefono" placeholder="Teléfono" data-inputmask='"mask": "999-999-9999"' data-mask>        
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <select class="form-control select2bs4" id="inputPais" style="width: 100%;">
+                                                                <option selected="selected">Pais</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="inputMunicipio" placeholder="Municipio">        
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="inputBarrio" placeholder="Barrio/Paraje">        
+                                                        </div>
+                                                         <div class="form-group">
+                                                           <select class="form-control select2bs4" id="inputRuta" style="width: 100%;">
+                                                                <option selected="selected">Ruta</option>
+                                                            </select>      
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <select class="form-control select2bs4" id="inputClasific" style="width: 100%;">
+                                                                <option selected="selected">Clasificación Cli.</option>
+                                                            </select>        
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" id="inputCuentaPrima" class="form-control rounded-0" placeholder="Cuenta Prima">
+                                                            <span class="input-group-append">
+                                                                <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-lgCuenta">
+                                                                    <i class="fas fa-search center"></i> 
+                                                                </a>
+                                                            </span>
+                                                        </div>
+                                                </div>
+                                                <div class="col-md-4">                                                   
+                                                        <div class="form-group">
+                                                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">        
+                                                        </div>                                                   
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="inputTel2" placeholder=" Telófono 2">        
+                                                        </div>
+                                                        <div class="form-group">
+                                                           <select class="form-control select2bs4" id="inputRegion" style="width: 100%;">
+                                                                <option selected="selected">Región</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="inputDistrito" placeholder="Distrito">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="inputSubBarrio" placeholder="Sub-Barrio">        
+                                                        </div>
+                                                         <div class="form-group">
+                                                           <select class="form-control select2bs4" id="inputPostal" style="width: 100%;">
+                                                                <option selected="selected">Zona Postal</option>
+                                                            </select>        
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <select class="form-control select2bs4" id="inputVendedor" style="width: 100%;">
+                                                                <option selected="selected">Vendedor</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" id="inputCuentaContable" class="form-control rounded-0" placeholder="Cuenta Contable">
+                                                            <span class="input-group-append">
+                                                                <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-lgCuenta">
+                                                                    <i class="fas fa-search center"></i> 
+                                                                </a>
+                                                            </span>
+                                                        </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                     <div class="form-group">
+                                                            <input type="text" class="form-control" id="inputWebsite" placeholder="Web Site">        
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="inputFax" placeholder="Fax">        
+                                                        </div>                                                   
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="inputProvincia" placeholder="Provincia">        
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="inputSeccion" placeholder="Sección">        
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <select class="form-control select2bs4" id="inputZona" style="width: 100%;">
+                                                                <option selected="selected">Zona</option>
+                                                            </select>    
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="inputCodPostal" placeholder="Código Postal">        
+                                                        </div>
+                                                         <div class="form-group">
+                                                            <select class="form-control select2bs4" id="inputTransporte" style="width: 100%;">
+                                                                <option selected="selected">Transporte</option>
+                                                            </select>            
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input class="custom-control-input" type="checkbox" id="CheckboxClienteActivo">
+                                                                <label for="CheckboxClienteActivo" class="custom-control-label">Cliente Activo</label>
+                                                           </div>
+                                                       </div>
+                                                 </div>
+                                            </div>
+                                 </div>
+                                <!-- /.tab-pane -->
+                                <!-- /.Tab Datos Crediticios -->
+                                <div class="tab-pane" id="DatosCrediticios">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <select class="form-control select2bs4" id="inputTipoCliente" style="width: 100%;">
+                                                   <option selected="selected">Tipo Cliente</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control select2bs4" id="inputTipoMoneda" style="width: 100%;">
+                                                    <option selected="selected">Tipo Moneda</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control select2bs4" id="inputFormaPago" style="width: 100%;">
+                                                    <option selected="selected">Forma De Pago</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control select2bs4" id="inputTermino" style="width: 100%;">
+                                                    <option selected="selected">Término</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="inputRepLegal" placeholder="Representante legal">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group date" id="FechaCumple" data-target-input="nearest">
+                                                    <input type="text" class="form-control datetimepicker-input" data-target="#FechaCumple" placeholder="Fecha Cumpleaños" />
+                                                    <div class="input-group-append" data-target="#FechaCumple" data-toggle="datetimepicker">
+                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                 <input type="text" class="form-control" id="inputRepLegal" placeholder="Dias Crédito">
+                                            </div>                                        
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <select class="form-control select2bs4" id="inputCobrador" style="width: 100%;">
+                                                    <option selected="selected">Cobrador</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="inputLimiteCred" placeholder="Limite Crédito">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="inputAcuerdoPago" placeholder="Acuerdo Pago">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="inputDireccionCobranza" placeholder="Dirección Cobranza">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group date" id="FechaEntrada" data-target-input="nearest">
+                                                    <input type="text" class="form-control datetimepicker-input" data-target="#FechaEntrada" placeholder="Fecha Entrada Sistema" />
+                                                    <div class="input-group-append" data-target="#FechaEntrada" data-toggle="datetimepicker">
+                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                    <input type="text" class="form-control" id="inputDireccionCobranza" placeholder="Balance Pendiente">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group date" id="FechaReenvio" data-target-input="nearest">
+                                                    <input type="text" class="form-control datetimepicker-input" data-target="#FechaReenvio" placeholder="Fecha Reenvio" />
+                                                    <div class="input-group-append" data-target="#FechaReenvio" data-toggle="datetimepicker">
+                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <select class="form-control select2bs4" id="inputPrecioVenta" style="width: 100%;">
+                                                    <option selected="selected">Precio Venta</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control select2bs4" id="inputClasifCredito" style="width: 100%;">
+                                                    <option selected="selected">Clasificación Crédito</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="inputDescuentoPorc" placeholder="% Descuento">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="inputPersonaContacto" placeholder="Persona Contacto">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group date" id="FechaUltimaVenta" data-target-input="nearest">
+                                                    <input type="text" class="form-control datetimepicker-input" data-target="#FechaUltimaVenta" placeholder="Ultima Fecha Venta" />
+                                                    <div class="input-group-append" data-target="#FechaUltimaVenta" data-toggle="datetimepicker">
+                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control select2bs4" id="inputDiasCaja" style="width: 100%;">
+                                                    <option selected="selected">Dias Caja</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="inputRazon" placeholder="Razón">
+                                            </div>                                      
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <select class="form-control select2bs4" id="inputTipoComprobante" style="width: 100%;">
+                                                    <option selected="selected">Tipo Comprobante</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <select class="form-control select2bs4" id="inputTipoConstribuyente" style="width: 100%;">
+                                                    <option selected="selected">Tipo Constribuyente</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="3" placeholder="Comentario"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" id="CheckboxCambioprecio">
+                                                    <label for="CheckboxCambioprecio" class="custom-control-label">Permitir cambio de precio?</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" id="CheckboxExentoimpuesto">
+                                                    <label for="CheckboxExentoimpuesto" class="custom-control-label">Exento de impuesto</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" id="CheckboxFacturarEntrega">
+                                                    <label for="CheckboxFacturarEntrega" class="custom-control-label">Facturar contra entrega</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" id="CheckboxClienteLegal">
+                                                    <label for="CheckboxClienteLegal" class="custom-control-label">Cliente en legal</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" id="CheckboxAcuerdoPago">
+                                                    <label for="CheckboxAcuerdoPago" class="custom-control-label">Con acuerdo pago</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" id="CheckboxBloqFact">
+                                                    <label for="CheckboxBloqFact" class="custom-control-label">Bloqueo Fact. Crédito</label>
+                                                </div>
+                                            </div>
+                                       </div>
+                                 </div>
+                                 <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" id="CheckboxMoraFact">
+                                                    <label for="CheckboxMoraFact" class="custom-control-label">Aplicar Mora Factura</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" id="CheckboxServicio">
+                                                    <label for="CheckboxServicio" class="custom-control-label">Servicio</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                 </div>
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                            <!-- /.Tab Desc x Pronto Pago -->
+                            <div class="tab-pane" id="DescProntoPago">
+                                 <div class="row">
+                                     <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="inputDiaInicio" placeholder="Dia Inicio">
+                                            </div>
+                                      </div>
+                                      <div class="col-sm-2">
+                                          <div class="form-group">
+                                                <input type="text" class="form-control" id="inputDiaFin" placeholder="Dia Fin">
+                                          </div>  
+                                      </div>
+                                      <div class="col-sm-2">
+                                           <div class="form-group">
+                                                <input type="text" class="form-control" id="inputDesc1" placeholder="Descuento 1">
+                                          </div>  
+                                      </div>
+                                      <div class="col-sm-2">
+                                           <div class="form-group">
+                                                <input type="text" class="form-control" id="inputDesc2" placeholder="Descuento 2">
+                                          </div>  
+                                      </div>
+                                      <div class="col-sm-2">
+                                            <button type="button" class="btn btn-success">Agregar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Borrar</button>
+                                      </div>                                        
+                                  </div>
+                                  <div class="row">                                       
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <table id="tblDescuentoxPago" class="table table-bordered table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Dia Inicio</th>
+                                                                <th>Dia Fin</th>
+                                                                <th>Descuento 1</th>
+                                                                <th>Descuento 2</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                   </table>
+                                            </div>
+                                      </div>
+                                </div>
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.Tab Lista Precios -->
+                            <div class="tab-pane" id="ListaPrecios">
+                                 <div class="row">
+                                     <div class="col-sm-2">
+                                            <div class="input-group mb-3">
+                                                <input type="text" id="inputCodigo" class="form-control rounded-0" placeholder="Código">
+                                                <span class="input-group-append">
+                                                    <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-lgProductos">
+                                                        <i class="fas fa-search center"></i>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                      </div>
+                                      <div class="col-sm-4">
+                                          <div class="form-group">
+                                                <input type="text" class="form-control" id="inputDescripcionlp" placeholder="Descripción">
+                                          </div>  
+                                      </div>
+                                      <div class="col-sm-2">
+                                           <div class="form-group">
+                                                <input type="text" class="form-control" id="inputPreciolp" placeholder="Precio">
+                                          </div>  
+                                      </div>
+                                      <div class="col-sm-2">
+                                            <button type="button" class="btn btn-success">Agregar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Borrar</button>
+                                      </div>                                        
+                                  </div>
+                                  <div class="row">                                       
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                <table id="tblListaPrecios" class="table table-bordered table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Codigo</th>
+                                                                <th>Descripción</th>
+                                                                <th>Precio</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                   </table>
+                                            </div>
+                                      </div>
+                                </div>
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.Tab Precio Recurrencia -->
+                            <div class="tab-pane" id="PrecioRecurrencia">
+                                 <div class="row">
+                                     <div class="col-sm-3">
+                                            <div class="input-group mb-3">
+                                                <input type="text" id="inputCodigo" class="form-control rounded-0" placeholder="Código">
+                                                <span class="input-group-append">
+                                                    <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-lgProductos">
+                                                        <i class="fas fa-search center"></i>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                      </div>
+                                      <div class="col-sm-3">
+                                          <div class="form-group">
+                                                <input type="text" class="form-control" id="inputDescripcionlp" placeholder="Descripción">
+                                          </div>  
+                                      </div>
+                                      <div class="col-sm-3">
+                                           <div class="form-group">
+                                                <input type="text" class="form-control" id="inputPreciolp" placeholder="Precio">
+                                          </div>  
+                                      </div>
+                                      <div class="col-sm-3">
+                                            <button type="button" class="btn btn-success">Agregar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Borrar</button>
+                                      </div>                                        
+                                  </div>
+                                  <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <select class="form-control select2bs4" id="inputMonedaR" style="width: 100%;">
+                                                    <option selected="selected">Moneda</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <select class="form-control select2bs4" id="inputTipoComprobanteR" style="width: 100%;">
+                                                    <option selected="selected">Tipo Comprobante</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <select class="form-control select2bs4" id="inputDiadeFactura" style="width: 100%;">
+                                                    <option selected="selected">Dia de Factura</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">                                       
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <table id="tblPrecioRecurrencia" class="table table-bordered table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Codigo</th>
+                                                                <th>Descripción</th>
+                                                                <th>Precio</th>
+                                                                <th>Moneda</th>
+                                                                <th>Dia de Factura</th>
+                                                                <th>NCF</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                   </table>
+                                            </div>
+                                      </div>
+                                </div>
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.Tab Otras Informaciones -->
+                            <div class="tab-pane" id="OtrasInformaciones">
+                                 <div class="row">
+                                     <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="inputBoker" placeholder="Boker">
+                                            </div>
+                                             <div class="form-group">
+                                                <input type="text" class="form-control" id="inputPhone" placeholder="Phone">
+                                            </div>
+                                             <div class="form-group">
+                                                <input type="text" class="form-control" id="inputTerms" placeholder="Terms">
+                                            </div>
+                                             <div class="form-group">
+                                                <input type="text" class="form-control" id="inputTipoDocumento" placeholder="Tipo Documento">
+                                            </div>
+                                             <div class="form-group">
+                                                <input type="text" class="form-control" id="inputPrecioLocal" placeholder="Precio Local">
+                                            </div>
+                                             <div class="form-group">
+                                                <input type="text" class="form-control" id="inputDireccionConsig" placeholder="Dirección consignatario">
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" type="checkbox" id="CheckboxPrecioFijo">
+                                                <label for="CheckboxPrecioFijo" class="custom-control-label">Precio Fijo</label>
+                                            </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                           <div class="form-group">
+                                                <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+                                            </div>
+                                             <div class="form-group">
+                                                <input type="text" class="form-control" id="inputFaxNo" placeholder="Fax #">
+                                            </div>
+                                             <div class="form-group">
+                                                <input type="text" class="form-control" id="inputNoContainer" placeholder="# Container">
+                                            </div>
+                                             <div class="form-group">
+                                                <input type="text" class="form-control" id="inputPrecioInternacional" placeholder="Precio Internacional">
+                                            </div>
+                                             <div class="form-group">
+                                                <input type="text" class="form-control" id="inputNombreConsig" placeholder="Nombre consignatario">
+                                            </div>
+                                             <div class="form-group">
+                                                <select class="form-control select2bs4" id="inputPaisConsig" style="width: 100%;">
+                                                    <option selected="selected">Pais consignatario</option>
+                                                </select>
+                                            </div>  
+                                      </div>                                                                 
+                                  </div>
+                               </div>
+                              <!-- /.tab-pane -->
+                            </div>
+                        </div><!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+                </div>
+                <div class="modal-footer justify-content-right">                 
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- /.modal Cuenta Contable -->
+<div class="modal fade" id="modal-lgCuenta">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cuentas Contables</h4>
+                     <div class="float-right">
+                            <a class="btn btn-success btn-sm">
+                                <i class="fas fa-search"></i> Buscar
+                            </a>
+                    <a class="btn btn-danger btn-sm" data-dismiss="modal">
+                                <i class="fas fa-times"></i> Cerrar
+                            </a>
+                      </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <table id="tblCuentaContable" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No. Cuenta</th>
+                                            <th>Descripción</th>
+                                            <th>Control</th>
+                                            <th>Cuenta Control</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+        <!-- /.modal Buscar Productos -->
+    <div class="modal fade" id="modal-lgProductos">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Buscar productos</h4>
+                   <div class="float-right">
+                            <a class="btn btn-success btn-sm">
+                                <i class="fas fa-search"></i> Buscar
+                            </a>
+                    <a class="btn btn-danger btn-sm" data-dismiss="modal">
+                                <i class="fas fa-times"></i> Cerrar
+                            </a>
+                      </div>
+                </div>
+                <div class="modal-body">               
+                    <div class="row">
+                        <div class="card-body">                       
+                            <div class="form-group">
+                                <table id="tblBuscarProductos" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Descripción</th>
+                                            <th>Precio Lista</th>
+                                            <th>Existencia</th>
+                                            <th>Referencia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
