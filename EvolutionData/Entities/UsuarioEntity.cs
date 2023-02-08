@@ -28,7 +28,7 @@ namespace EvolutionData.Entities
         public bool EstadoCaja { get; set; }
         public int? VendedorID { get; set; }
 
-        public virtual Grupo Grupo { get; set; } = null!;
+        public virtual GrupoEntity Grupo { get; set; } = null!;
 
         public virtual Sucursal Sucursal { get; set; } = null!;
 

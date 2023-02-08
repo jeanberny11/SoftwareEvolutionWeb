@@ -14,7 +14,7 @@ namespace EvolutionData.Context
         {
         }
 
-        public virtual DbSet<Grupo> Grupos { get; set; }
+        public virtual DbSet<GrupoEntity> Grupos { get; set; }
 
         public virtual DbSet<Sucursal> Sucursales { get; set; }
 
@@ -28,29 +28,7 @@ namespace EvolutionData.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasPostgresExtension("pg_catalog", "adminpack");
-
-            modelBuilder.Entity<Grupo>(entity =>
-            {
-                entity.ToTable("t_grupos");
-                entity.HasKey(e => e.Grupoid).HasName("t_grupos_pkey");
-                entity.Property(e => e.Grupoid)
-                    .ValueGeneratedNever()
-                    .HasColumnName("f_codigo_grupo");
-                entity.Property(e => e.Descripcion)
-                    .HasMaxLength(300)
-                    .HasDefaultValueSql("''")
-                    .HasColumnName("f_descripcion");
-                entity.Property(e => e.Estado)
-                    .HasDefaultValueSql("true")
-                    .HasColumnName("f_estado");
-                entity.Property(e => e.FechaGrupo)
-                    .HasDefaultValueSql("to_timestamp((0))")
-                    .HasColumnName("f_fecha_grupo");
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(150)
-                    .HasDefaultValueSql("''")
-                    .HasColumnName("f_nombre");
-            });
+          
 
             modelBuilder.Entity<Sucursal>(entity =>
             {
